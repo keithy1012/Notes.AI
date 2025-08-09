@@ -108,13 +108,13 @@ class NotesGenerator:
         note = LATEX_BLOCK.sub(repl_inline, note)
         return note
 
-    def generate_directory(self, title, summary, base_path = "notes"):
+    def generate_directory(self, title, summary, base_path = "../notes"):
         directories_list = []
         for root, dirs, _ in os.walk(base_path):
             for d in dirs:
                 full_path = os.path.join(root, d)
                 rel_path = os.path.relpath(full_path, base_path)
-                directories_list.append(f"notes/{rel_path.replace(os.sep, '/')}/")
+                directories_list.append(f"../notes/{rel_path.replace(os.sep, '/')}/")
     
         directories = "\n".join(sorted(directories_list)) if directories_list else "(No existing subdirectories)"
     
@@ -131,16 +131,16 @@ class NotesGenerator:
     {directories}
 
     Your answer should be a valid path under 'notes/', like:
-        notes/Math/Calculus/
-        notes/Biology/Botany/
-        notes/CS/Machine_Learning/
+        ../notes/Math/Calculus/
+        ../notes/Biology/Botany/
+        ../notes/CS/Machine_Learning/
     Respond with only the valid subdirectory file path and nothing else.
     """
 
         response = self.client.chat.completions.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You're an intelligent file organizer. Based on the summary and content, suggest a clean subdirectory path under the base Notes/ folder."},
+                {"role": "system", "content": "You're an intelligent file organizer. Based on the summary and content, suggest a clean subdirectory path under the base ../notes/ folder."},
                 {"role": "user", "content": prompt}
             ],
             temperature=self.TEMP,

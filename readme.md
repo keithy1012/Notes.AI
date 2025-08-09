@@ -30,8 +30,7 @@ This project takes presentation or document files and uses AI to generate clean,
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/ai-presentation-notes.git
-   cd ai-presentation-notes
+   git clone https://github.com/keithy1012/Notes.AI.git
    ```
 
 2. Install dependencies:
@@ -57,6 +56,13 @@ This project takes presentation or document files and uses AI to generate clean,
      ```bash
      sudo apt install tesseract-ocr
      ```
+5. Ensure PyAudio is installed:
+
+- **macOS (Homebrew)**:
+
+```base
+brew install portaudio
+```
 
 ### Executing program
 
@@ -79,7 +85,7 @@ This project takes presentation or document files and uses AI to generate clean,
 ### Example Run
 
 ```bash
-python main.py "Algebra_101.pptx"
+python Generator.py "Algebra_101.pptx"
 ```
 
 ### Help
